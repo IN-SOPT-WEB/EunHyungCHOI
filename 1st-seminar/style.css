@@ -1,0 +1,17 @@
+@import url("./subStyle.css");
+
+body {
+    background-color: blue;
+}
+
+ul > li {
+    color: red;
+}
+
+.three ~ li {
+    color: white
+}
+
+.section {
+    display: flex;
+}
