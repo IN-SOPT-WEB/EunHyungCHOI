@@ -8,19 +8,28 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <header class="header">헤더</header>
-    <nav class="nav">네비</nav>
+    <header class="header">
+        To do List
+    </header>
+    <nav class="nav">
+        <div class="nav__button"># 오늘만 보기</div>
+        <div class="nav__button"># 내일만 보기</div>
+        <div class="nav__button"># 함께 보기</div>
+    </nav>
     <main class="main">
         <section class="left-section">
             <h3>오늘 할 일</h3>
-            <ul></ul>
+            <ul class="section__ul"></ul>
+            <input type="text" placeholder="할 일을 입력해주세요" />
         </section>
         <section class="right-section">
             <h3>내일 할 일</h3>
-            <ul>
-                <li>예시1</li>
-                <li>예시2</li>
+            <ul class="section__ul">
+                <li>슈톨렌 먹기 <span>🗑</span></li>
+                <hr />
+                <li>슈톨렌 또 먹기 <span>🗑</span></li>
             </ul>
+            <input type="text" placeholder="할 일을 입력해주세요"/>
         </section>
     </main>
     <footer class="footer">푸터</footer>
