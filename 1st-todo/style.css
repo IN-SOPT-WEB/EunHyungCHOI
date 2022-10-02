@@ -3,21 +3,36 @@ body {
 }
 
 .header {
-
+    background-color: red;
+    height: 5vh;
 }
 
 .nav {
+    background-color: blue;
+    place-items: center;
+    height: 5vh;
+}
 
+.main {
+    background-color: antiquewhite;
+    border: 2px solid black;
+    height: 85vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .main .left-section {
-
+    background-color: purple;
+    width: 50%;
 }
 
 .main .right-section {
-
+    background-color: green;
+    width: 50%;
 }
 
 .footer {
-    
+    background-color: red;
+    height: 5vh;
 }
