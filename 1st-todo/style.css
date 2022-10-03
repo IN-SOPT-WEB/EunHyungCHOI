@@ -1,3 +1,5 @@
+@import url("./mainStyle.css");
+
 body {
     margin: 0 auto;
     background: radial-gradient(79.32% 102.86% at 27.14% 6.85%, #2C5B9B 3.42%, #8ED7DA 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
@@ -39,86 +41,6 @@ body {
 .main {
     height: 85vh;
     display: flex;
-}
-
-.main section {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    padding: 20px 10px;
-    margin: 10px;
-    border-radius: 10px;
-    background: #FFFFFF;
-    box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
-    border-radius: 16px;
-}
-
-.main .right-section {
-    background: rgba(255, 255, 255, 0.23);
-}
-
-.section__header {
-    text-align: center;
-    margin: 10px 0px;
-    font-weight: 700;
-    height: 5%;
-}
-
-.section__ul {
-    height: 90%;
-    padding: 0px 10px;
-}
-
-.section__ul li {
-    list-style: none;
-    line-height: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;;
-}
-
-.right-section li {
-    color:rgba(0, 0, 0, 0.5);
-}
-
-.section__ul li span {
-    cursor: pointer;
-}
-
-.section__ul hr {
-    border: 0.5px solid #D9D9D9;
-}
-
-.section__footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5%;
-    padding: 10px;
-}
-
-.right-section .section__footer {
-    background: #FFFFFF;
-    box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
-    border-radius: 16px;
-}
-
-.section__footer input {
-    width: 90%;
-    height: 20px;
-    border: 0;
-    background: rgba(255, 255, 255, 0);
-}
-
-.section__footer input:focus{
-    outline: none;
-}
-
-.section__footer div {
-    width: 10%;
-    text-align: center;
-    cursor: pointer;
-    font-size: 18px;
 }
 
 .footer {
