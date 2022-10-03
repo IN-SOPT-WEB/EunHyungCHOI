@@ -33,4 +33,5 @@ img {
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+    background-color: gray;
 }
