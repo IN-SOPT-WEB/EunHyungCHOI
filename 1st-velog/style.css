@@ -28,10 +28,14 @@ img {
     padding: 10px;
 }
 
-.cards {
+main {
     display: flex;
     justify-content: center;
+    padding-left: 10px;
+}
+
+.cards {
+    display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    background-color: gray;
+    width: 95%;
 }

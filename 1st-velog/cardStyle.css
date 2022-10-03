@@ -12,12 +12,12 @@
 
 @media all and (max-width: 800px) {
     .card {
-        min-width: 40%;
+        min-width: 45%;
     }
 }
 @media all and (max-width: 600px) {
     .card {
-        min-width: 100%;
+        min-width: 95%;
     }
 }
 
