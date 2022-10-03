@@ -21,6 +21,12 @@
     }
 }
 
+.card:hover {
+    cursor: pointer;
+    transform: translate(0, -2%);
+    transition: .1s ease-in-out;
+}
+
 .card__thumbnail {
     width: 100%;
     height: 50%;
