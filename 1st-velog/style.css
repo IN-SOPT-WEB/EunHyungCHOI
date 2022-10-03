@@ -1,3 +1,5 @@
+@import url("./headerStyle.css");
+@import url("./navStyle.css");
 @import url("./cardStyle.css");
 
 body {
@@ -15,7 +17,8 @@ img {
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: red;
+    align-items: center;
+    padding: 10px;
 }
 
 .nav {
@@ -23,49 +26,6 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-}
-
-.nav__filter {
-    display: flex;
-    justify-content: space-around;
-    width: 400px;
-    margin-left: 10px;
-}
-
-.nav__filter div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin: 0px 10px;
-    padding: 5px 10px;
-}
-
-.nav__filter span {
-    margin: 0px 10px;
-}
-
-.nav__filter .trend {
-    border-bottom: 2px solid black;
-}
-
-.nav__filter .recent {
-    opacity: 50%;
-}
-
-.nav__filter select {
-    height: 30px;
-    width: 120px;
-    border: 0px;
-    color: rgba(0, 0, 0, 0.5);
-    outline: none;
-    font-size: 15px;
-}
-
-.nav__vert {
-    cursor: pointer;
-    margin-right: 10px;
 }
 
 .cards {
