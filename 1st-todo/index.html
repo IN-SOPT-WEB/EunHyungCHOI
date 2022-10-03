@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="header">
-        To do List
+        📅 To do List
     </header>
     <nav class="nav">
         <div class="nav__button"># 오늘만 보기</div>
@@ -18,20 +18,26 @@
     </nav>
     <main class="main">
         <section class="left-section">
-            <h3>오늘 할 일</h3>
+            <header class="section__header">오늘 할 일</header>
             <ul class="section__ul"></ul>
-            <input type="text" placeholder="할 일을 입력해주세요" />
+            <footer class="section__footer">
+                <input type="text" placeholder="할 일을 입력해주세요"/>
+                <div>💬</div>
+            </footer>
         </section>
         <section class="right-section">
-            <h3>내일 할 일</h3>
+            <header class="section__header">내일 할 일</header>
             <ul class="section__ul">
-                <li>슈톨렌 먹기 <span>🗑</span></li>
+                <li>리액트 공부하기<span>🗑</span></li>
                 <hr />
-                <li>슈톨렌 또 먹기 <span>🗑</span></li>
+                <li>JS 공부하기<span>🗑</span></li>
             </ul>
-            <input type="text" placeholder="할 일을 입력해주세요"/>
+            <footer class="section__footer">
+                <input type="text" placeholder="할 일을 입력해주세요"/>
+                <div>💬</div>
+            </footer>
         </section>
     </main>
-    <footer class="footer">푸터</footer>
+    <footer class="footer"></footer>
 </body>
 </html>
