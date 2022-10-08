@@ -1,10 +1,12 @@
 .main section {
     display: flex;
     flex-direction: column;
+
     width: 50%;
+
     padding: 20px 10px;
     margin: 10px;
-    border-radius: 10px;
+    
     background: #FFFFFF;
     box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
     border-radius: 16px;
@@ -15,23 +17,28 @@
 }
 
 .section__header {
-    text-align: center;
-    margin: 10px 0px;
-    font-weight: 700;
     height: 5%;
+
+    margin: 10px 0px;
+
+    text-align: center;
+    font-weight: 700;
 }
 
 .section__ul {
     height: 90%;
+
     padding: 0px 10px;
 }
 
 .section__ul li {
+    display: flex;
+    justify-content: space-between;
+
     list-style: none;
     line-height: 30px;
+
     width: 100%;
-    display: flex;
-    justify-content: space-between;;
 }
 
 .right-section li {
@@ -50,7 +57,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     height: 5%;
+
     padding: 10px;
 }
 
@@ -63,6 +72,7 @@
 .section__footer input {
     width: 90%;
     height: 20px;
+
     border: 0;
     background: rgba(255, 255, 255, 0);
 }
@@ -73,7 +83,9 @@
 
 .section__footer div {
     width: 10%;
-    text-align: center;
-    cursor: pointer;
+
     font-size: 18px;
+    text-align: center;
+    
+    cursor: pointer;
 }
