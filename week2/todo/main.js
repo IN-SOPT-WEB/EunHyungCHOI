@@ -21,22 +21,28 @@ const todayBtn = document.querySelector(".js-today"),
     tomorrowBtn = document.querySelector(".js-tomorrow"),
     bothBtn = document.querySelector(".js-both");
 
+const btns = [todayBtn, tomorrowBtn, bothBtn];
+
+function btnClickEffect(target) {
+    btns.map((btn) => {
+        if(btn === target) {
+            btn.classList.add("clicked");
+        } else {
+            btn.classList.remove("clicked");
+        }
+    })
+}
+
 function handleTodayClick(e) {
-    todayBtn.classList.add("clicked");
-    tomorrowBtn.classList.remove("clicked");
-    bothBtn.classList.remove("clicked");
+    btnClickEffect(e.currentTarget);
 }
 
 function handleTomorrowClick(e) {
-    todayBtn.classList.remove("clicked");
-    tomorrowBtn.classList.add("clicked");
-    bothBtn.classList.remove("clicked");
+    btnClickEffect(e.currentTarget);
 }
 
 function handleBothClick(e) {
-    todayBtn.classList.remove("clicked");
-    tomorrowBtn.classList.remove("clicked");
-    bothBtn.classList.add("clicked");
+    btnClickEffect(e.currentTarget);
 
 }
 
