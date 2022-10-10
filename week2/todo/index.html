@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <header class="header">
+        📅 To do List
+    </header>
+    <nav class="nav">
+        <button class="nav__button js-today"># 오늘만 보기</button>
+        <button class="nav__button js-tomorrow"># 내일만 보기</button>
+        <button class="nav__button js-both"># 함께 보기</button>
+    </nav>
+    <main class="main">
+        <section class="left-section">
+            <header class="section__header">오늘 할 일</header>
+            <ul class="section__ul"></ul>
+            <footer class="section__footer">
+                <input type="text" placeholder="할 일을 입력해주세요"/>
+                <div>💬</div>
+            </footer>
+        </section>
+        <section class="right-section">
+            <header class="section__header">내일 할 일</header>
+            <ul class="section__ul">
+                <li>리액트 공부하기<span>🗑</span></li>
+                <hr />
+                <li>JS 공부하기<span>🗑</span></li>
+            </ul>
+            <footer class="section__footer">
+                <input type="text" placeholder="할 일을 입력해주세요"/>
+                <div>💬</div>
+            </footer>
+        </section>
+    </main>
+    <footer class="footer"></footer>
+    <script src="./main.js"></script>
+</body>
+</html>
