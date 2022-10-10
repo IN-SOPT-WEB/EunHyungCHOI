@@ -24,6 +24,12 @@ const todayBtn = document.querySelector(".js-today"),
 const leftSection = document.querySelector(".left-section"),
     rightSection = document.querySelector(".right-section");
 
+const leftInput = document.querySelector(".js-left-input"),
+    rightInput = document.querySelector(".js-right-input");
+
+const leftUl = document.querySelector(".js-left-ul"),
+    rightUl = document.querySelector(".js-right-ul");
+
 const btns = [todayBtn, tomorrowBtn, bothBtn];
 
 function btnClickEffect(target) {
@@ -54,10 +60,21 @@ function handleBothClick(e) {
     leftSection.classList.remove("hidden");
 }
 
+function handleTodaySubmit(e) {
+    console.log(e.target.value);
+}
+
+function handleTomorrowSubmit(e) {
+    console.log(e.currentTarget.value)
+}
+
 function init() {
     todayBtn.addEventListener("click", handleTodayClick);
     tomorrowBtn.addEventListener("click", handleTomorrowClick);
     bothBtn.addEventListener("click", handleBothClick);
+    
+    leftInput.addEventListener("input", handleTodaySubmit);
+    rightInput.addEventListener("input", handleTomorrowSubmit);
 }
 
 init();

@@ -19,22 +19,26 @@
     <main class="main">
         <section class="left-section">
             <header class="section__header">오늘 할 일</header>
-            <ul class="section__ul"></ul>
+            <ul class="section__ul js-left-ul"></ul>
             <footer class="section__footer">
-                <input type="text" placeholder="할 일을 입력해주세요"/>
-                <div>💬</div>
+                <form class="footer__form">
+                    <input class="form__text-input js-left-input" type="text" placeholder="할 일을 입력해주세요"/>
+                    <input class="form__button-input" type="button" value="💬"/>
+                </form>
             </footer>
         </section>
         <section class="right-section">
             <header class="section__header">내일 할 일</header>
-            <ul class="section__ul">
+            <ul class="section__ul js-right-ul">
                 <li>리액트 공부하기<span>🗑</span></li>
                 <hr />
                 <li>JS 공부하기<span>🗑</span></li>
             </ul>
             <footer class="section__footer">
-                <input type="text" placeholder="할 일을 입력해주세요"/>
-                <div>💬</div>
+                <form class="footer__form">
+                    <input class="form__text-input js-right-input" type="text" placeholder="할 일을 입력해주세요"/>
+                    <input class="form__button-input" type="button" value="💬"/>
+                </form>
             </footer>
         </section>
     </main>

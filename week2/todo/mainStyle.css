@@ -69,7 +69,15 @@
     border-radius: 16px;
 }
 
-.section__footer input {
+.section__footer .footer__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.section__footer .form__text-input {
     width: 90%;
     height: 20px;
 
@@ -77,15 +85,16 @@
     background: rgba(255, 255, 255, 0);
 }
 
-.section__footer input:focus{
+.section__footer .form__text-input:focus{
     outline: none;
 }
 
-.section__footer div {
-    width: 10%;
-
+.section__footer .form__button-input {
     font-size: 18px;
     text-align: center;
+    
+    border: 0;
+    background-color: transparent;
     
     cursor: pointer;
 }
