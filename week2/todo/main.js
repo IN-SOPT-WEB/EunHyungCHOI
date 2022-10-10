@@ -21,6 +21,9 @@ const todayBtn = document.querySelector(".js-today"),
     tomorrowBtn = document.querySelector(".js-tomorrow"),
     bothBtn = document.querySelector(".js-both");
 
+const leftSection = document.querySelector(".left-section"),
+    rightSection = document.querySelector(".right-section");
+
 const btns = [todayBtn, tomorrowBtn, bothBtn];
 
 function btnClickEffect(target) {
@@ -35,15 +38,20 @@ function btnClickEffect(target) {
 
 function handleTodayClick(e) {
     btnClickEffect(e.currentTarget);
+    rightSection.classList.add("hidden");
+    leftSection.classList.remove("hidden");
 }
 
 function handleTomorrowClick(e) {
     btnClickEffect(e.currentTarget);
+    rightSection.classList.remove("hidden");
+    leftSection.classList.add("hidden");
 }
 
 function handleBothClick(e) {
     btnClickEffect(e.currentTarget);
-
+    rightSection.classList.remove("hidden");
+    leftSection.classList.remove("hidden");
 }
 
 function init() {

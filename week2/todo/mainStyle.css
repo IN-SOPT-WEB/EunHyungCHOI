@@ -1,8 +1,8 @@
-.main section {
+.left-section, .right-section {
     display: flex;
     flex-direction: column;
 
-    width: 50%;
+    width: 100%;
 
     padding: 20px 10px;
     margin: 10px;

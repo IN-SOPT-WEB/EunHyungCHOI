@@ -68,3 +68,14 @@ body {
     background-color: #FFFFFF;
     color: black;
 }
+
+.hidden {
+    overflow: hidden;
+    
+    width: 0;
+
+    padding: 0;
+    margin: 0;
+
+    transition-duration: .2s;
+}
