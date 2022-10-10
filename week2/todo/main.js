@@ -24,11 +24,16 @@ const todayBtn = document.querySelector(".js-today"),
 const leftSection = document.querySelector(".left-section"),
     rightSection = document.querySelector(".right-section");
 
+const leftForm = document.querySelector(".js-left-form"),
+    rightForm = document.querySelector(".js-right-form");
+
 const leftInput = document.querySelector(".js-left-input"),
     rightInput = document.querySelector(".js-right-input");
 
 const leftUl = document.querySelector(".js-left-ul"),
     rightUl = document.querySelector(".js-right-ul");
+
+const removeBtn = document.querySelector(".remove-button");
 
 const btns = [todayBtn, tomorrowBtn, bothBtn];
 
@@ -61,11 +66,41 @@ function handleBothClick(e) {
 }
 
 function handleTodaySubmit(e) {
-    console.log(e.target.value);
+    e.preventDefault();
+    
+    const newTodo = document.createElement("li");
+    const removeBtn = document.createElement("button");
+    const todoLine = document.createElement("hr");
+    removeBtn.innerHTML = "🗑";
+    removeBtn.classList.add("remove-button");
+
+    newTodo.innerHTML = leftInput.value;
+    newTodo.classList.add("ul__li");
+
+    todoLine.classList.add("ul__hr")
+
+    newTodo.appendChild(removeBtn);
+    leftUl.appendChild(newTodo);
+    leftUl.appendChild(todoLine);
 }
 
 function handleTomorrowSubmit(e) {
-    console.log(e.currentTarget.value)
+    e.preventDefault();
+    
+    const newTodo = document.createElement("li");
+    const removeBtn = document.createElement("button");
+    const todoLine = document.createElement("hr");
+    removeBtn.innerHTML = "🗑";
+    removeBtn.classList.add("remove-button");
+
+    newTodo.innerHTML = rightInput.value;
+    newTodo.classList.add("ul__li");
+
+    todoLine.classList.add("ul__hr")
+
+    newTodo.appendChild(removeBtn);
+    rightUl.appendChild(newTodo);
+    rightUl.appendChild(todoLine);
 }
 
 function init() {
@@ -73,8 +108,8 @@ function init() {
     tomorrowBtn.addEventListener("click", handleTomorrowClick);
     bothBtn.addEventListener("click", handleBothClick);
     
-    leftInput.addEventListener("input", handleTodaySubmit);
-    rightInput.addEventListener("input", handleTomorrowSubmit);
+    leftForm.addEventListener("submit", handleTodaySubmit);
+    rightForm.addEventListener("submit", handleTomorrowSubmit);
 }
 
 init();

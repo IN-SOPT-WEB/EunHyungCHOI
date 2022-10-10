@@ -41,15 +41,18 @@
     width: 100%;
 }
 
-.right-section li {
+.right-section .ul__li {
     color:rgba(0, 0, 0, 0.5);
 }
 
-.section__ul li span {
+.section__ul .ul__li .remove-button {
+    border: 0;
+    background-color: transparent;
+
     cursor: pointer;
 }
 
-.section__ul hr {
+.section__ul .ul__hr {
     border: 0.5px solid #D9D9D9;
 }
 
