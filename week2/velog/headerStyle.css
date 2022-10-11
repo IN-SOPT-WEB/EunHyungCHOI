@@ -21,6 +21,11 @@
     cursor: pointer;
 }
 
+.header__buttons .upload > a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .upload:hover{
     background-color: black;
     color: white;
