@@ -1,3 +1,5 @@
+const body = document.querySelector("body");
+
 const modalBackground = document.querySelector(".modal-background"),
     modalBox = document.querySelector(".modal-box"),
     modalBtn = document.querySelector(".modal-button");
@@ -10,6 +12,7 @@ const daySelect = document.querySelector(".js-select"),
     optionItems = document.querySelectorAll(".js-option");
 let selectedItem = document.querySelector(".option-selected");
 
+// For 드롭다운
 function handleOptionClick(e) {
     // select 텍스트 변경
     daySelect.value = e.currentTarget.innerHTML;
@@ -30,15 +33,20 @@ function handleSelectClick() {
         optionBox.classList.add("select-selected");
 }
 
+// For 모달 기능
 function handleCardClick(e) {
     modalBackground.style.visibility = "visible";
     modalBox.style.visibility = "visible";
+
+    body.style.position = "fixed";
 
     modalBox.appendChild(e.currentTarget.cloneNode(true));
 }
 
 function handleCloseClick() {
     modalBox.removeChild(modalBox.querySelector("article"));
+
+    body.style.position = "relative";
 
     modalBackground.style.visibility = "hidden";
     modalBox.style.visibility = "hidden";
