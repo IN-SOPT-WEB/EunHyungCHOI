@@ -63,28 +63,9 @@ function handleBothClick(e) {
     leftSection.classList.remove("hidden");
 }
 
-function handleTodaySubmit(e) {
+function handleTodoSubmit(e) {
     e.preventDefault();
-    
-    const newTodo = document.createElement("li");
-    const removeBtn = document.createElement("button");
-    const todoLine = document.createElement("hr");
-    removeBtn.innerHTML = "🗑";
-    removeBtn.classList.add("remove-button");
 
-    todoLine.classList.add("li__hr");
-
-    newTodo.innerHTML = leftInput.value;
-    newTodo.classList.add("ul__li");
-
-    newTodo.appendChild(removeBtn);
-    newTodo.appendChild(todoLine);
-    leftUl.appendChild(newTodo);
-}
-
-function handleTomorrowSubmit(e) {
-    e.preventDefault();
-    
     const newTodo = document.createElement("li");
     const removeBtn = document.createElement("button");
     const todoLine = document.createElement("hr");
@@ -92,26 +73,35 @@ function handleTomorrowSubmit(e) {
     removeBtn.innerHTML = "🗑";
     removeBtn.classList.add("remove-button");
     removeBtn.addEventListener("click", handleRemoveClick);
-
+    
     todoLine.classList.add("ul__hr");
 
-    newTodo.innerHTML = rightInput.value;
+    newTodo.innerHTML = e.currentTarget === leftForm ? leftInput.value : rightInput.value;
     newTodo.classList.add("ul__li");
     newTodo.appendChild(removeBtn);
 
-    if(rightUl.childElementCount > 0) {
-        rightUl.appendChild(todoLine);
+    if(e.currentTarget === leftForm) {
+        leftUl.childElementCount > 0 && leftUl.appendChild(todoLine);
+        leftUl.appendChild(newTodo);
+    } else {
+        rightUl.childElementCount > 0 && rightUl.appendChild(todoLine);
+        rightUl.appendChild(newTodo);
     }
-    rightUl.appendChild(newTodo);
 }
 
 function handleRemoveClick(e) {
     if(e.target.parentElement.parentElement === leftUl) {
         // left-section의 todo를 지웠다면
         leftUl.removeChild(e.target.parentElement);
+        // 가로선 지우기
+        const lines = document.querySelectorAll(".ul__hr");
+        leftUl.childElementCount > 1 && leftUl.removeChild(lines[lines.length - 1]);
     } else {
         // right-section의 todo를 지웠다면
         rightUl.removeChild(e.target.parentElement);
+        // 가로선 지우기
+        const lines = document.querySelectorAll(".ul__hr");
+        rightUl.childElementCount > 1 && rightUl.removeChild(lines[lines.length - 1]);
     }
 }
 
@@ -120,8 +110,8 @@ function init() {
     tomorrowBtn.addEventListener("click", handleTomorrowClick);
     bothBtn.addEventListener("click", handleBothClick);
     
-    leftForm.addEventListener("submit", handleTodaySubmit);
-    rightForm.addEventListener("submit", handleTomorrowSubmit);
+    leftForm.addEventListener("submit", handleTodoSubmit);
+    rightForm.addEventListener("submit", handleTodoSubmit);
 }
 
 init();
