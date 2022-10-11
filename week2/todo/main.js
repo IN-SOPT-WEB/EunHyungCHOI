@@ -1,22 +1,3 @@
-/**
- * .hidden 클래스를 css에서 선언해두고 classList append를 하면
- * 오늘만보기 / 내일만보기 구현 가능
- * -> remove로 삭제 가능
- */
-
-/**
- * 할일 추가하는 법 -> createElement
- * const currentLi = document.createElement("li");
- * const btn = create("button");
- * btn.innerHTML = "<span><이미지>/span>";
- * currentLi.appendChild(btn);
- * currentLi.innerHTML ="어쩌구"
- * 
- * 엔터 눌렀을 때도 추가되게 하려면 "keydown" 이벤트 리스너 부착
- * 
- * delete 버튼 활성화: currentLi가 사라지는 핸들러 구현
- */
-
 const todayBtn = document.querySelector(".js-today"),
     tomorrowBtn = document.querySelector(".js-tomorrow"),
     bothBtn = document.querySelector(".js-both");
@@ -37,11 +18,9 @@ const btns = [todayBtn, tomorrowBtn, bothBtn];
 
 function btnClickEffect(target) {
     btns.map((btn) => {
-        if(btn === target) {
-            btn.classList.add("clicked");
-        } else {
+        btn === target ? 
+            btn.classList.add("clicked") : 
             btn.classList.remove("clicked");
-        }
     })
 }
 
@@ -81,27 +60,36 @@ function handleTodoSubmit(e) {
     newTodo.appendChild(removeBtn);
 
     if(e.currentTarget === leftForm) {
-        leftUl.childElementCount > 0 && leftUl.appendChild(todoLine);
+        leftUl.hasChildNodes() && leftUl.appendChild(todoLine);
         leftUl.appendChild(newTodo);
     } else {
-        rightUl.childElementCount > 0 && rightUl.appendChild(todoLine);
+        rightUl.hasChildNodes() && rightUl.appendChild(todoLine);
         rightUl.appendChild(newTodo);
     }
 }
 
 function handleRemoveClick(e) {
+    // 지우고자 하는 todo의 인덱스
+    const todoIndex = Array.from(
+        e.target.parentElement.parentElement.children
+    ).indexOf(e.target.parentElement);
+
+    const hrIndex = todoIndex === 0 ? 0 : todoIndex / 2 - 1;
+
+    console.log(hrIndex)
+
     if(e.target.parentElement.parentElement === leftUl) {
         // left-section의 todo를 지웠다면
         leftUl.removeChild(e.target.parentElement);
         // 가로선 지우기
-        const lines = document.querySelectorAll(".ul__hr");
-        leftUl.childElementCount > 1 && leftUl.removeChild(lines[lines.length - 1]);
+        const hrs = document.querySelectorAll(".ul__hr");
+        leftUl.childElementCount > 1 && leftUl.removeChild(hrs[hrIndex]);
     } else {
         // right-section의 todo를 지웠다면
         rightUl.removeChild(e.target.parentElement);
         // 가로선 지우기
-        const lines = document.querySelectorAll(".ul__hr");
-        rightUl.childElementCount > 1 && rightUl.removeChild(lines[lines.length - 1]);
+        const hrs = document.querySelectorAll(".ul__hr");
+        rightUl.childElementCount > 1 && rightUl.removeChild(hrs[hrIndex]);
     }
 }
 
