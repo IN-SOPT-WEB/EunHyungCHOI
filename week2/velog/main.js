@@ -1,3 +1,8 @@
+const modalBackground = document.querySelector(".modal-background"),
+    modalBox = document.querySelector(".modal-box");
+
+const cards = document.querySelectorAll(".card");
+
 const daySelect = document.querySelector(".js-select"),
     optionBox = document.querySelector(".js-options"),
     optionItems = document.querySelectorAll(".js-option");
@@ -23,12 +28,25 @@ function handleSelectClick() {
         optionBox.classList.add("select-selected");
 }
 
+function handleCardClick(e) {
+    console.log(e.currentTarget);
+
+    modalBackground.style.visibility = "visible";
+    modalBox.style.visibility = "visible";
+
+    
+}
+
 function init() {
     daySelect.value = selectedItem.innerHTML;
 
     daySelect.addEventListener("click", handleSelectClick);
     optionItems.forEach((item) => 
         item.addEventListener("click", handleOptionClick)
+    );
+
+    cards.forEach((card) => 
+        card.addEventListener("click", handleCardClick)
     );
 };
 

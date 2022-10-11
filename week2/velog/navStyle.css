@@ -29,7 +29,7 @@
 }
 
 .nav__filter .recent {
-    opacity: 50%;
+    color: gray;
 }
 
 .filter__select-wrapper .filter__select {
