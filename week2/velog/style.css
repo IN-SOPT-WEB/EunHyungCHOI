@@ -42,9 +42,9 @@ main {
 
 .modal-background {
     visibility: hidden;
-
     position: fixed;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -65,4 +65,15 @@ main {
     background-color: white;
 
     z-index: 2;
+}
+
+.modal-button {
+    width: 30px;
+    height: 30px;
+
+    margin-top: 10px;
+
+    border: 0;
+
+    cursor: pointer;
 }

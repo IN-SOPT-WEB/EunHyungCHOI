@@ -1,7 +1,9 @@
 const modalBackground = document.querySelector(".modal-background"),
-    modalBox = document.querySelector(".modal-box");
+    modalBox = document.querySelector(".modal-box"),
+    modalBtn = document.querySelector(".modal-button");
 
-const cards = document.querySelectorAll(".card");
+const cardSection = document.querySelector(".cards"),
+    cardArtics = document.querySelectorAll(".card");
 
 const daySelect = document.querySelector(".js-select"),
     optionBox = document.querySelector(".js-options"),
@@ -32,7 +34,14 @@ function handleCardClick(e) {
     modalBackground.style.visibility = "visible";
     modalBox.style.visibility = "visible";
 
-    modalBox.appendChild(e.currentTarget);
+    modalBox.appendChild(e.currentTarget.cloneNode(true));
+}
+
+function handleCloseClick() {
+    modalBox.removeChild(modalBox.querySelector("article"));
+
+    modalBackground.style.visibility = "hidden";
+    modalBox.style.visibility = "hidden";
 }
 
 function init() {
@@ -43,9 +52,11 @@ function init() {
         item.addEventListener("click", handleOptionClick)
     );
 
-    cards.forEach((card) => 
-        card.addEventListener("click", handleCardClick)
+    cardArtics.forEach((artic) => 
+        artic.addEventListener("click", handleCardClick)
     );
+    
+    modalBtn.addEventListener("click", handleCloseClick);
 };
 
 init();
