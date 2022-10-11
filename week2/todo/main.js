@@ -33,8 +33,6 @@ const leftInput = document.querySelector(".js-left-input"),
 const leftUl = document.querySelector(".js-left-ul"),
     rightUl = document.querySelector(".js-right-ul");
 
-const removeBtn = document.querySelector(".remove-button");
-
 const btns = [todayBtn, tomorrowBtn, bothBtn];
 
 function btnClickEffect(target) {
@@ -74,14 +72,14 @@ function handleTodaySubmit(e) {
     removeBtn.innerHTML = "🗑";
     removeBtn.classList.add("remove-button");
 
+    todoLine.classList.add("li__hr");
+
     newTodo.innerHTML = leftInput.value;
     newTodo.classList.add("ul__li");
 
-    todoLine.classList.add("ul__hr")
-
     newTodo.appendChild(removeBtn);
+    newTodo.appendChild(todoLine);
     leftUl.appendChild(newTodo);
-    leftUl.appendChild(todoLine);
 }
 
 function handleTomorrowSubmit(e) {
@@ -90,17 +88,31 @@ function handleTomorrowSubmit(e) {
     const newTodo = document.createElement("li");
     const removeBtn = document.createElement("button");
     const todoLine = document.createElement("hr");
+
     removeBtn.innerHTML = "🗑";
     removeBtn.classList.add("remove-button");
+    removeBtn.addEventListener("click", handleRemoveClick);
+
+    todoLine.classList.add("ul__hr");
 
     newTodo.innerHTML = rightInput.value;
     newTodo.classList.add("ul__li");
-
-    todoLine.classList.add("ul__hr")
-
     newTodo.appendChild(removeBtn);
+
+    if(rightUl.childElementCount > 0) {
+        rightUl.appendChild(todoLine);
+    }
     rightUl.appendChild(newTodo);
-    rightUl.appendChild(todoLine);
+}
+
+function handleRemoveClick(e) {
+    if(e.target.parentElement.parentElement === leftUl) {
+        // left-section의 todo를 지웠다면
+        leftUl.removeChild(e.target.parentElement);
+    } else {
+        // right-section의 todo를 지웠다면
+        rightUl.removeChild(e.target.parentElement);
+    }
 }
 
 function init() {
