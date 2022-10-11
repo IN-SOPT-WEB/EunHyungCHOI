@@ -29,12 +29,10 @@ function handleSelectClick() {
 }
 
 function handleCardClick(e) {
-    console.log(e.currentTarget);
-
     modalBackground.style.visibility = "visible";
     modalBox.style.visibility = "visible";
 
-    
+    modalBox.appendChild(e.currentTarget);
 }
 
 function init() {
