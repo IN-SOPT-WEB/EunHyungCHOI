@@ -6,6 +6,8 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    margin-top: 10px;
 }
 
 .header__tags {
@@ -24,14 +26,17 @@ header {
     background-color: #f3f3f3;
     border-radius: 18px;
 
+    font-size: 16px;
     color:rgb(57, 209, 158);
+
+    cursor: pointer;
 }
 
 .form__input {
-
-
     border: 0;
     background-color: transparent;
+
+    font-size: 16px;
 
     outline: none;
 }
