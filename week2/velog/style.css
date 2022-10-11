@@ -1,0 +1,41 @@
+@import url("./headerStyle.css");
+@import url("./navStyle.css");
+@import url("./cardStyle.css");
+
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: aliceblue;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+}
