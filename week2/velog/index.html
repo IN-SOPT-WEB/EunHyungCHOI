@@ -27,12 +27,20 @@
                 <img src="../../images/icon_recent.png" />
                 <span>최신</span>
             </div>
-            <select class="select">
-                <option>오늘</option>
-                <option>이번 주</option>
-                <option>이번 달</option>
-                <option>올해</option>
-            </select>
+            <div class="filter__select-wrapper js-wrapper">
+                <select class="filter__select js-select">
+                    <option selected>오늘</option>
+                    <option>이번 주</option>
+                    <option>이번 달</option>
+                    <option>올해</option>
+                </select>
+                <div class="options js-options">
+                    <option class="options__option js-option option-selected">오늘</option>
+                    <option class="options__option js-option">이번 주</option>
+                    <option class="options__option js-option">이번 달</option>
+                    <option class="options__option js-option">올해</option>
+                </div>
+            </div>
         </div>
         <img class="nav__vert" src="../../images/img_vert.png"/>
     </nav>
@@ -178,5 +186,6 @@
             </article>
         </section>
     </main>
+    <script src="./main.js"></script>
 </body>
 </html>

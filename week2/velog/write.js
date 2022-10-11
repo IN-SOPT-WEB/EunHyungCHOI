@@ -3,15 +3,8 @@ const tagForm = document.querySelector(".js-form-tag"),
 
 const tags = document.querySelector(".js-tags");
 
-function handleTagRemove(e) {
-    
-}
-
 function handleTagSubmit(e) {
     e.preventDefault();
-    const todoIndex = Array.from(
-        e.target.parentElement.parentElement.children
-    ).indexOf(e.target.parentElement);
 
     const newTag = document.createElement("li");
     const tagList = Array.from(tags.children).map((child) => 

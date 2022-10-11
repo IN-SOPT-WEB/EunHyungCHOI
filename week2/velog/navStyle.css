@@ -7,7 +7,7 @@
     margin-left: 10px;
 }
 
-.nav__filter div {
+.nav__filter .trend, .recent {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,19 +32,71 @@
     opacity: 50%;
 }
 
-.nav__filter select {
+.filter__select-wrapper .filter__select {
     height: 30px;
     width: 120px;
-
+    
     border: 0px;
-    color: rgba(0, 0, 0, 0.5);
     outline: none;
 
     font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+}
+
+.filter__select option {
+    display: none;
+}
+
+.options{
+    visibility: hidden;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    top: 130px;
+
+    width: 130px;
+    line-height: 40px;
+    
+    margin: 0px;
+    padding-right: 20px;
+    
+    background-color: white;
+    box-shadow: 10px 5px 20px rgba(32, 56, 85, 0.15);
+}
+
+.options__option{
+    width: 100%;
+
+    padding: 0px 10px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+    cursor: pointer;
+}
+
+.options__option:last-child{
+    border-bottom: 0;
+}
+
+.options__option:hover {
+    background-color: rgba(209, 209, 209, 0.3);
 }
 
 .nav__vert {
     margin-right: 10px;
 
     cursor: pointer;
+}
+
+/* virtual */
+.select-selected {
+    visibility: visible;
+}
+
+.option-selected {
+    color: rgb(85, 202, 118)
 }
