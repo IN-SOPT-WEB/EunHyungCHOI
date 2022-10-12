@@ -32,14 +32,63 @@ main {
     display: flex;
     justify-content: center;
     padding-left: 10px;
+
+    overflow-x: hidden;
+
+    width: 100%;
+}
+
+.slide-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    top: 145px;
+    width: 40px;
+    height: 410px;
+
+    text-align: center;
+    font-size: 20px;
+    color:rgb(81, 114, 143);
+}
+
+.slide-button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+
+    color: white;
+
+    transition-duration: .1s;
+    cursor: pointer;
+}
+
+.main__left {
+    left: 15%;
+}
+
+.main__right {
+    right: 15%;
 }
 
 .cards {
     display: flex;
-    flex-wrap: wrap;
-    width: 95%;
+
+    width: 1800px;
+
+    margin-left: 900px;
 }
 
+.slide-left {
+    margin-left: 900px;
+    transition-duration: .20s;
+}
+
+.slide-right {
+    margin-left: -900px;
+    transition-duration: .20s;
+}
+
+/* For Modal */
 .modal-background {
     visibility: hidden;
     position: fixed;
@@ -59,7 +108,7 @@ main {
 .modal-box {
     visibility: hidden;
 
-    width: 50%;
+    width: 300px;
     min-height: 50%;
 
     background-color: white;

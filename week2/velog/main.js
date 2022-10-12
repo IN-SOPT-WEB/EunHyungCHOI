@@ -7,6 +7,8 @@ const modalBackground = document.querySelector(".modal-background"),
 const cardSection = document.querySelector(".cards"),
     cardArtics = document.querySelectorAll(".card");
 
+const slideBtns = document.querySelectorAll(".slide-button");
+
 const daySelect = document.querySelector(".js-select"),
     optionBox = document.querySelector(".js-options"),
     optionItems = document.querySelectorAll(".js-option");
@@ -52,6 +54,16 @@ function handleCloseClick() {
     modalBox.style.visibility = "hidden";
 }
 
+function handleSliding(e) {
+    if(e.currentTarget.innerHTML === "⬅️") {
+        cardSection.classList.remove("slide-right");
+        cardSection.classList.add("slide-left");
+    } else {
+        cardSection.classList.remove("slide-left");
+        cardSection.classList.add("slide-right");
+    }
+}
+
 function init() {
     daySelect.value = selectedItem.innerHTML;
 
@@ -65,6 +77,10 @@ function init() {
     );
     
     modalBtn.addEventListener("click", handleCloseClick);
+
+    slideBtns.forEach((btn) => 
+        btn.addEventListener("click", handleSliding)
+    );
 };
 
 init();
