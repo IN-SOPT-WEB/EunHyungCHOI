@@ -17,10 +17,24 @@ function handleTagSubmit(e) {
 
     if(!tagList.includes(newTag.innerHTML)){
         tags.appendChild(newTag);
+        // 로컬 스토리지에 스트링 배열 저장
+        tagList.push(newTag.innerHTML);
+        localStorage.setItem('tags', tagList);
     }
 };
 
 function init() {
+    const storedTags = localStorage.getItem('tags').split(',');
+    storedTags.forEach((tagStr) => {
+        const newTag = document.createElement("li");
+
+        newTag.classList.add("tags__tag");
+        newTag.innerHTML = tagStr;
+        newTag.addEventListener("click", (e) => tags.removeChild(e.currentTarget));
+
+        tags.appendChild(newTag);
+    });
+
     tagForm.addEventListener("submit", handleTagSubmit);
 };
 
