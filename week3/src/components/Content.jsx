@@ -43,14 +43,34 @@ const Button = styled.button`
     margin: 10px;
 `;
 
+const members = [
+    "남준", "림", "명지", "명헌", "서연", "서현", "서영", "서현",
+    "서희", "성경", "예원", "우영", "유진", "은형", "재욱", "주함",
+    "준상", "지수", "지영", "하윤", "현수", "현욱", "현지", "형겸", "혜은"
+];
+
 export default function Content() {
     const [score, setScore] = useState(0);
-    const [options, setOptions] = useState([1, 2, 3, 4, 5]);
+    const [profiles, setProfiles] = useState(members.map((member) => (
+        {
+            name: member,
+            image : `images/${member}.jpg`
+        }
+    )));
+    const [answer, setAnswer] = useState(profiles[parseInt(Math.random() * profiles.length)]);
+    const [options, setOptions] = useState(members.slice(0, 5));
+
+    const shuffle = () => {
+        setProfiles((prev) => {
+            prev.sort(() => Math.random() - 0.5);
+        })
+    }
+    
   return (
     <Section>
         <Score>{score}</Score>
         <Test>
-            <Image src='images/은형.jpg'/>
+            <Image src={answer.image}/>
             <Buttons>
                 {options.map((option) => (
                     <Button>{option}</Button>
