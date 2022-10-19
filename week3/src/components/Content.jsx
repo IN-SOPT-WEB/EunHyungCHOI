@@ -28,7 +28,6 @@ const Test = styled.article`
 
 const Image = styled.img`
     width: 300px;
-    height: 300px;
 
     margin: 20px;
 
@@ -60,10 +59,25 @@ export default function Content() {
     const [answer, setAnswer] = useState(profiles[parseInt(Math.random() * profiles.length)]);
     const [options, setOptions] = useState(members.slice(0, 5));
 
-    const shuffle = () => {
+    const shuffleOptions = () => {
         setProfiles((prev) => {
             prev.sort(() => Math.random() - 0.5);
         })
+    };
+
+    const onClickOption = (e) => {
+        if(e.currentTarget.innerText === answer) {
+            // 정답일 경우
+            // 점수 + 1
+            setScore((prev) => prev + 1);
+            // 정답 애니메이션
+
+            // 다음 문제로 넘어가기
+            shuffleOptions();
+        } else {
+            // 땡
+            //리팩토링하기~~~~~~~~~~~~~~~~~~
+        }
     }
     
   return (
@@ -73,7 +87,7 @@ export default function Content() {
             <Image src={answer.image}/>
             <Buttons>
                 {options.map((option) => (
-                    <Button>{option}</Button>
+                    <Button key={option} onClick={onClickOption}>{option}</Button>
                 ))}
             </Buttons>
         </Test>
