@@ -1,0 +1,81 @@
+@import url("./mainStyle.css");
+
+body {
+    margin: 0 auto;
+    background: radial-gradient(79.32% 102.86% at 27.14% 6.85%, #2C5B9B 3.42%, #8ED7DA 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    backdrop-filter: blur(2px);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 5vh;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.23);
+    font-size: 18px;
+}
+
+.nav {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+
+    height: 5vh;
+    margin-top: 5px;
+}
+
+.nav__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 30px;
+    width: 20%;
+
+    margin: 5px;
+
+    border-radius: 20px;
+    border: 0px;
+    background: rgba(255, 255, 255, 0.23);
+
+    color: #FFFFFF;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.nav__button:hover{
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.main {
+    display: flex;
+
+    min-height: 85vh;
+}
+
+.footer {
+    height: 5vh;
+
+    background: rgba(255, 255, 255, 0.23);
+}
+
+/* 가상 선택자 */
+.clicked {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.hidden {
+    overflow: hidden;
+    
+    width: 0;
+
+    padding: 0;
+    margin: 0;
+
+    transition-duration: .2s;
+}
