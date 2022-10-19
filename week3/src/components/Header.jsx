@@ -1,9 +1,16 @@
+import styled from "styled-components";
 
-export default function Header({data}) {
-    console.log(data);
+const Title = styled.h1`
+  text-align: center;
+` 
+
+export default function Header() {
+
   return (
-    <div>
-        Header
-    </div>
+    <header>
+      <Title>
+          나는 누구일까용?
+      </Title>
+    </header>
   )
 }
