@@ -54,7 +54,7 @@ const members = [
     "준상", "지수", "지영", "하윤", "현수", "현욱", "현지", "형겸", "혜은"
 ];
 
-export default function Content({modalOpen}) {
+export default function Content({modalOpen, setModalMessage}) {
     const [score, setScore] = useState(0);
     // 프로필 셔플 -> 옵션 -> 옵션 중 랜덤하나로 answer
     const [profiles, setProfiles] = useState(members.map((member) => (
@@ -79,10 +79,12 @@ export default function Content({modalOpen}) {
             // 정답일 경우
             setScore((prev) => prev + 1);
             setProfiles((prev) => [...prev].sort(() => Math.random() - 0.8));
+            setModalMessage("정답!");
         } else {
             // 땡
-            modalOpen();
+            setModalMessage("틀렸어... 실망이야.");
         }
+        modalOpen();
     }
 
     const onClickRestart = () => {

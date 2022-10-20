@@ -7,6 +7,7 @@ import Modal from "./components/Modal";
 
 function App() {
   const [modalOpened, setModalOpened] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleOpen = () => {
     setModalOpened(true);
@@ -19,10 +20,10 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Content modalOpen={handleOpen}/>
+      <Content modalOpen={handleOpen} setModalMessage={setModalMessage}/>
       {modalOpened && (
         <ModalPortal closePortal={handleClose}>
-          <Modal/>
+          <Modal message={modalMessage}/>
         </ModalPortal>
       )}
       <div id="root-modal"></div>
