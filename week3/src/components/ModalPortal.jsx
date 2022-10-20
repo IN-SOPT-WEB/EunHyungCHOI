@@ -21,7 +21,8 @@ const ModalContent = styled.div`
   z-index: 10;
   width: 300px;
   padding: 10px 0px;
-  border: 1px solid;
+  border: 0;
+  border-radius: 5px;
   background: white;
 `;
 
@@ -43,6 +44,16 @@ const ModalBackground = styled.div`
   height: 100%;
   background: black;
   opacity: 0.5;
+`
+
+const Button = styled.div`
+    padding: 5px 20px;
+
+    border: 0;
+    border-radius: 5px;
+    background-color: orange;
+
+    cursor: pointer;
 `
 
 export default function ModalPortal({children, closePortal}) {
@@ -67,7 +78,7 @@ export default function ModalPortal({children, closePortal}) {
             <ModalContent>
             <ModalContentMain>{children}</ModalContentMain>
             <ModalContentClose>
-                <button onClick={closePortal}>닫기</button>
+                <Button onClick={closePortal}>닫기</Button>
             </ModalContentClose>
             </ModalContent>
       </Modal>,

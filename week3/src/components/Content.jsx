@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled, {css, keyframes} from 'styled-components'
 
 const Section = styled.section`
     display: flex;
@@ -13,10 +13,109 @@ const Score = styled.header`
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    width: 100px;
     height: 50px;
 
-    background-color: #c2c2c2;
+    ${props => props.score == 1 &&
+        css`
+            background-color: #f29087;
+            animation-name: pop;
+            animation-duration: .2s;
+
+            @keyframes pop {
+                0% {
+                transform: translate(0, 0);
+                }
+                50% {
+                transform: translate(0, -30px);
+                }
+                100% {
+                transform: translate(0, 0);
+                }
+            }
+        `
+    }
+    ${props => props.score == 2 &&
+        css`
+            background-color: #ffd175;
+            animation-name: pop2;
+            animation-duration: .2s;
+
+            @keyframes pop2 {
+                0% {
+                transform: translate(0, 0);
+                }
+                50% {
+                transform: translate(0, -30px);
+                }
+                100% {
+                transform: translate(0, 0);
+                }
+            }
+        `
+    }
+    ${props => props.score == 3 &&
+        css`
+            background-color: #fffb79;
+            animation-name: pop3;
+            animation-duration: .2s;
+
+            @keyframes pop3 {
+                0% {
+                transform: translate(0, 0);
+                }
+                50% {
+                transform: translate(0, -30px);
+                }
+                100% {
+                transform: translate(0, 0);
+                }
+            }
+        `
+    }
+    ${props => props.score == 4 &&
+        css`
+            background-color: #b6ff79;
+            animation-name: pop4;
+            animation-duration: .2s;
+
+            @keyframes pop4 {
+                0% {
+                transform: translate(0, 0);
+                }
+                50% {
+                transform: translate(0, -30px);
+                }
+                100% {
+                transform: translate(0, 0);
+                }
+            }
+        `
+    }
+    ${props => props.score == 5 &&
+        css`
+            background-color: #89c8ff;
+            animation-name: pop5;
+            animation-duration: .2s;
+
+            @keyframes pop5 {
+                0% {
+                transform: translate(0, 0);
+                }
+                50% {
+                transform: translate(0, -30px);
+                }
+                100% {
+                transform: translate(0, 0);
+                }
+            }
+        `
+    }
+
+    font-size: 20px;
+    font-weight: 700;
+
+    border-radius: 30px;
 `;
 
 const TestArticle = styled.article`
@@ -27,7 +126,8 @@ const TestArticle = styled.article`
 `
 const EndArticle = styled.article`
     display: flex;
-    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
     height: 300px;
 `;
@@ -46,6 +146,12 @@ const Buttons = styled.div`
 
 const Button = styled.button`
     margin: 10px;
+    padding: 10px 30px;
+
+    border: 0;
+    border-radius: 20px;
+
+    cursor: pointer;
 `;
 
 const members = [
@@ -93,10 +199,11 @@ export default function Content({modalOpen, setModalMessage}) {
     
   return (
     <Section>
-        <Score>{score}</Score>
-        {score === 5 ?
+        <Score score={score}>{score}</Score>
+        {score >= 5 ?
         <EndArticle>
-            내가 해냄~~
+            <h2>🥳🥳🥳🥳🥳</h2>
+            <h2>내가 해냄~~</h2>
         </EndArticle>
         : <TestArticle>
             <Image src={answer.image}/>
