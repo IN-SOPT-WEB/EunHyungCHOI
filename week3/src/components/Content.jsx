@@ -54,9 +54,9 @@ const members = [
     "준상", "지수", "지영", "하윤", "현수", "현욱", "현지", "형겸", "혜은"
 ];
 
-export default function Content() {
+export default function Content({modalOpen}) {
     const [score, setScore] = useState(0);
-    // 프로필 셔플 -> 옵션 -> 옵션 중 하나로 answer
+    // 프로필 셔플 -> 옵션 -> 옵션 중 랜덤하나로 answer
     const [profiles, setProfiles] = useState(members.map((member) => (
         {
             name: member,
@@ -81,6 +81,7 @@ export default function Content() {
             setProfiles((prev) => [...prev].sort(() => Math.random() - 0.8));
         } else {
             // 땡
+            modalOpen();
         }
     }
 
