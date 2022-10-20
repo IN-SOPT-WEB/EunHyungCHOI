@@ -19,12 +19,18 @@ const Score = styled.header`
     background-color: #c2c2c2;
 `;
 
-const Test = styled.article`
+const TestArticle = styled.article`
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 `
+const EndArticle = styled.article`
+    display: flex;
+    align-items: center;
+
+    height: 300px;
+`;
 
 const Image = styled.img`
     width: 300px;
@@ -85,14 +91,18 @@ export default function Content() {
   return (
     <Section>
         <Score>{score}</Score>
-        <Test>
+        {score === 5 ?
+        <EndArticle>
+            내가 해냄~~
+        </EndArticle>
+        : <TestArticle>
             <Image src={answer.image}/>
             <Buttons>
                 {options.map((option) => (
                     <Button onClick={onClickOption}>{option.name}</Button>
                 ))}
             </Buttons>
-        </Test>
+        </TestArticle>}
         <Button onClick={onClickRestart}>다시하기</Button>
     </Section>
   )
