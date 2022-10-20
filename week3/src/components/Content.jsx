@@ -72,10 +72,14 @@ export default function Content() {
         if(e.currentTarget.innerText === answer.name) {
             // 정답일 경우
             setScore((prev) => prev + 1);
-            setProfiles((prev) => [...prev].sort(() => Math.random() - 0.5));
+            setProfiles((prev) => [...prev].sort(() => Math.random() - 0.8));
         } else {
             // 땡
         }
+    }
+
+    const onClickRestart = () => {
+        window.location.reload();
     }
     
   return (
@@ -89,7 +93,7 @@ export default function Content() {
                 ))}
             </Buttons>
         </Test>
-        <Button>다시하기</Button>
+        <Button onClick={onClickRestart}>다시하기</Button>
     </Section>
   )
 }
