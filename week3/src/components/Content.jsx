@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const Section = styled.section`
@@ -50,33 +50,31 @@ const members = [
 
 export default function Content() {
     const [score, setScore] = useState(0);
+    // 프로필 셔플 -> 옵션 -> 옵션 중 하나로 answer
     const [profiles, setProfiles] = useState(members.map((member) => (
         {
             name: member,
             image : `images/${member}.jpg`
         }
     )));
-    const [answer, setAnswer] = useState(profiles[parseInt(Math.random() * profiles.length)]);
-    const [options, setOptions] = useState(members.slice(0, 5));
+    const [options, setOptions] = useState(profiles.slice(0, 5));
+    const [answer, setAnswer] = useState(options[parseInt(Math.random() * 5)]);
 
-    const shuffleOptions = () => {
-        setProfiles((prev) => {
-            prev.sort(() => Math.random() - 0.5);
-        })
-    };
+    useEffect(() => {
+        setAnswer(options[parseInt(Math.random() * 5)]);
+    }, [options]);
+
+    useEffect(() => {
+        setOptions(profiles.slice(0, 5));
+    }, [profiles]);
 
     const onClickOption = (e) => {
-        if(e.currentTarget.innerText === answer) {
+        if(e.currentTarget.innerText === answer.name) {
             // 정답일 경우
-            // 점수 + 1
             setScore((prev) => prev + 1);
-            // 정답 애니메이션
-
-            // 다음 문제로 넘어가기
-            shuffleOptions();
+            setProfiles((prev) => [...prev].sort(() => Math.random() - 0.5));
         } else {
             // 땡
-            //리팩토링하기~~~~~~~~~~~~~~~~~~
         }
     }
     
@@ -87,7 +85,7 @@ export default function Content() {
             <Image src={answer.image}/>
             <Buttons>
                 {options.map((option) => (
-                    <Button key={option} onClick={onClickOption}>{option}</Button>
+                    <Button onClick={onClickOption}>{option.name}</Button>
                 ))}
             </Buttons>
         </Test>
