@@ -177,7 +177,7 @@ export default function Content({modalOpen, setModalMessage}) {
     }, [options]);
 
     useEffect(() => {
-        setOptions(profiles.slice(0, 5));
+        setOptions(profiles.slice(0, 5))
     }, [profiles]);
 
     const onClickOption = (e) => {
