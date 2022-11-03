@@ -196,23 +196,35 @@ export default function Content({modalOpen, setModalMessage}) {
     const onClickRestart = () => {
         window.location.reload();
     }
-    
-  return (
-    <Section>
-        <Score score={score}>{score}</Score>
-        {score >= 5 ?
-        <EndArticle>
-            <h2>🥳🥳🥳🥳🥳</h2>
-            <h2>내가 해냄~~</h2>
-        </EndArticle>
-        : <TestArticle>
+
+    const EndContent = () => {
+        return (
+            <EndArticle>
+                <h2>🥳🥳🥳🥳🥳</h2>
+                <h2>내가 해냄~~</h2>
+            </EndArticle>
+        );
+    }
+
+    const PlayContent = () => {
+        return (
+            <TestArticle>
             <Image src={answer.image}/>
             <Buttons>
                 {options.map((option) => (
                     <Button onClick={onClickOption}>{option.name}</Button>
                 ))}
             </Buttons>
-        </TestArticle>}
+        </TestArticle>
+        );
+    }
+    
+  return (
+    <Section>
+        <Score score={score}>{score}</Score>
+        {score >= 5 ?
+        <EndContent/>
+        : <PlayContent/>}
         <Button onClick={onClickRestart}>다시하기</Button>
     </Section>
   )
