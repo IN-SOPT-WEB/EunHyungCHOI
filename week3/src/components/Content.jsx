@@ -8,6 +8,42 @@ const Section = styled.section`
     flex-direction: column;
 `;
 
+const pop = keyframes`
+    0% {
+    transform: translateY(0);
+    }
+    50% {
+    transform: translateY(-30px);
+    }
+    100% {
+    transform: translateY(0);
+    }
+`
+
+const popAnimations = [1, 2, 3, 4, 5].map((idx) => (
+    {
+        name: `pop${idx}`,
+        animation: {pop}
+    }
+));
+
+console.log(popAnimations)
+
+const scorePop = (score) => {
+    return (
+        css`
+            background-color: ${
+                score === 1 ? '#f29087' :
+                score === 2 ? '#ffd175' :
+                score === 3 ? '#fffb79' :
+                score === 4 ? '#b6ff79' :
+                score === 5 ? '#89c8ff' : 'white'
+            };
+            animation: ${popAnimations[score].animation} .2s;
+        `
+    )
+};
+
 const Score = styled.header`
     display: flex;
     justify-content: center;
@@ -16,101 +52,30 @@ const Score = styled.header`
     width: 100px;
     height: 50px;
 
-    ${props => props.score == 1 &&
+    ${props => props.score > 0 ? scorePop(props.score) : ''}
+
+    /* ${props => props.score === 1 ?
         css`
             background-color: #f29087;
-            animation-name: pop;
-            animation-duration: .2s;
-
-            @keyframes pop {
-                0% {
-                transform: translate(0, 0);
-                }
-                50% {
-                transform: translate(0, -30px);
-                }
-                100% {
-                transform: translate(0, 0);
-                }
-            }
-        `
-    }
-    ${props => props.score == 2 &&
+            animation: ${pop} .2s;
+        ` : props.score === 2 ?
         css`
             background-color: #ffd175;
-            animation-name: pop2;
-            animation-duration: .2s;
-
-            @keyframes pop2 {
-                0% {
-                transform: translate(0, 0);
-                }
-                50% {
-                transform: translate(0, -30px);
-                }
-                100% {
-                transform: translate(0, 0);
-                }
-            }
-        `
-    }
-    ${props => props.score == 3 &&
+            animation: ${pop} .2s;
+        ` : props.score === 3 ?
         css`
             background-color: #fffb79;
-            animation-name: pop3;
-            animation-duration: .2s;
-
-            @keyframes pop3 {
-                0% {
-                transform: translate(0, 0);
-                }
-                50% {
-                transform: translate(0, -30px);
-                }
-                100% {
-                transform: translate(0, 0);
-                }
-            }
-        `
-    }
-    ${props => props.score == 4 &&
+            animation: ${pop} .2s;
+        ` : props.score === 4 ?
         css`
             background-color: #b6ff79;
-            animation-name: pop4;
-            animation-duration: .2s;
-
-            @keyframes pop4 {
-                0% {
-                transform: translate(0, 0);
-                }
-                50% {
-                transform: translate(0, -30px);
-                }
-                100% {
-                transform: translate(0, 0);
-                }
-            }
-        `
-    }
-    ${props => props.score == 5 &&
+            animation: ${pop} .2s;
+        ` : props.score === 5 ?
         css`
             background-color: #89c8ff;
-            animation-name: pop5;
-            animation-duration: .2s;
-
-            @keyframes pop5 {
-                0% {
-                transform: translate(0, 0);
-                }
-                50% {
-                transform: translate(0, -30px);
-                }
-                100% {
-                transform: translate(0, 0);
-                }
-            }
-        `
-    }
+            animation: ${pop} .2s;
+        ` : css``
+    } */
 
     font-size: 20px;
     font-weight: 700;
