@@ -8,26 +8,32 @@ const Section = styled.section`
     flex-direction: column;
 `;
 
-const popAnimations = [1, 2, 3, 4, 5].map((idx) => (
-    keyframes`
+const pop = keyframes`
     0% {
     transform: translateY(0);
     }
     50% {
-    transform: translateY(-30px * ${idx});
+    transform: translateY(-30px);
     }
     100% {
     transform: translateY(0);
     }
 `
-));
 
-const scoreAnimations = ['#f29087', '#ffd175', '#fffb79', '#b6ff79', '#89c8ff'].map((color, index) => (
-    css`
-        background-color: ${color};
-        animation: ${popAnimations[index]} .2s;
-    `
-));
+const getAnimationCssByScore = (score) => {
+    return (
+        css`
+        background-color: ${
+            score === 1? '#f29087' :
+            score === 2? '#ffd175' :
+            score === 3? '#fffb79' :
+            score === 4? '#b6ff79' :
+            score === 5? '#89c8ff' : 'white'
+        };
+        animation: ${pop} .2s;
+        `
+    )
+}
 
 const Score = styled.header`
     display: flex;
@@ -37,7 +43,7 @@ const Score = styled.header`
     width: 100px;
     height: 50px;
 
-    ${props => scoreAnimations[props.score - 1]}
+    ${props => getAnimationCssByScore(props.score)}
 
     font-size: 20px;
     font-weight: 700;
@@ -96,15 +102,10 @@ export default function Content({modalOpen, setModalMessage}) {
             image : `images/${member}.jpg`
         }
     )));
-    const [options, setOptions] = useState(profiles.slice(0, 5));
-    const [answer, setAnswer] = useState(options[parseInt(Math.random() * 5)]);
+    const [answer, setAnswer] = useState(profiles.slice(0, 5)[parseInt(Math.random() * 5)]);
 
     useEffect(() => {
-        setAnswer(options[parseInt(Math.random() * 5)]);
-    }, [options]);
-
-    useEffect(() => {
-        setOptions(profiles.slice(0, 5))
+        setAnswer(profiles.slice(0, 5)[parseInt(Math.random() * 5)]);
     }, [profiles]);
 
     const onClickOption = (e) => {
@@ -138,7 +139,7 @@ export default function Content({modalOpen, setModalMessage}) {
             <TestArticle>
             <Image src={answer.image}/>
             <Buttons>
-                {options.map((option) => (
+                {profiles.slice(0, 5).map((option) => (
                     <Button onClick={onClickOption}>{option.name}</Button>
                 ))}
             </Buttons>
