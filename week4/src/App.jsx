@@ -1,5 +1,5 @@
 // ./App.jsx
-import Router from "./lib/router";
+import Router from "./Router";
 
 function App() {
   return <Router />;
