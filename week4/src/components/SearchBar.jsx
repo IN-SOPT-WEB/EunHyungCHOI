@@ -8,7 +8,8 @@ const Box = styled.div`
   flex-direction: column;
 
   width: 80%;
-  height: 20vh;
+  height: 20%;
+  padding: 20px;
   background-color: #6c00b9a3;
   border-radius: 25px;
 `;
