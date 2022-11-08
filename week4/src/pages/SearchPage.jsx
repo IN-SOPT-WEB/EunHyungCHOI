@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Result from "../components/Result";
+import SearchBar from "../components/SearchBar";
 
 export default function SearchPage() {
-  return <div>SearchPage</div>;
+  const [userId, setUserId] = useState("");
+
+  return (
+    <div>
+      <SearchBar />
+      <Result />
+    </div>
+  );
 }
