@@ -34,7 +34,7 @@ export default function SearchPage() {
       .then((res) => {
         console.log(res.data);
         const {
-          avater_url,
+          avatar_url,
           name,
           login,
           html_url,
@@ -44,7 +44,7 @@ export default function SearchPage() {
         } = res.data;
 
         setUserInfo({
-          imageUrl: avater_url,
+          imageUrl: avatar_url,
           userName: name,
           userId: login,
           githubUrl: html_url,

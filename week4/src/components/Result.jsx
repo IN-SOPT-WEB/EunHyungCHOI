@@ -80,12 +80,14 @@ const Circle = styled.div`
 export default function Result({ userInfo }) {
   return (
     <Box>
-      <Image src="github-icon.png" />
+      <Image src={userInfo.imageUrl} alt="프로필 이미지" />
       <Names>
         <h1>{userInfo.userName}</h1>
         <h2>{userInfo.userId}</h2>
       </Names>
-      <Button>Visit {userInfo.userName}</Button>
+      <Button onClick={() => (window.location.href = userInfo.githubUrl)}>
+        Visit {userInfo.userName}
+      </Button>
       <Circles>
         {["Followers", "Followings", "Repos"].map((category, index) => (
           <Circle key={index}>
