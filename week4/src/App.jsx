@@ -1,8 +1,14 @@
 // ./App.jsx
 import Router from "./Router";
+import GlobalStyle from "./style/GlobalStyle";
 
 function App() {
-  return <Router />;
+  return (
+    <>
+      <GlobalStyle />
+      <Router />
+    </>
+  );
 }
 
 export default App;
