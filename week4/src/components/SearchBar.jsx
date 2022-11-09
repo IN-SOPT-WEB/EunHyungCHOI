@@ -107,10 +107,7 @@ export default function SearchBar() {
         {historyArr.length > 0 && historyOpen && (
           <HistoryUl tabIndex={0}>
             {historyArr.map((history, index) => (
-              <HistoryLi
-                key={index}
-                onClickCapture={(e) => console.log(e.currentTarget)}
-              >
+              <HistoryLi key={index}>
                 <p
                   onClick={(e) => {
                     navigate(`${e.currentTarget.innerHTML}`);
@@ -120,15 +117,18 @@ export default function SearchBar() {
                   {history}
                 </p>
                 <button
-                  onClick={(e) =>
+                  onClick={(e) => {
+                    let index = historyArr.indexOf(
+                      e.target.parentNode.firstChild.innerHTML
+                    );
+
                     setHistoryArr((prev) =>
                       prev.filter(
                         (history) =>
-                          history !==
-                          e.currentTarget.parentNode.firstChild.innerHTML
+                          history !== e.target.parentNode.firstChild.innerHTML
                       )
-                    )
-                  }
+                    );
+                  }}
                 >
                   x
                 </button>
