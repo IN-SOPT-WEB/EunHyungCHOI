@@ -78,12 +78,6 @@ export default function SearchBar() {
   const [historyArr, setHistoryArr] = useState([]);
   const [historyOpen, setHistoryOpen] = useState(false);
 
-  const handleSubmitUserId = (e) => {
-    e.preventDefault();
-
-    setInputValue(e.currentTarget.value);
-  };
-
   const handleOnKeyPress = (e) => {
     if (e.key === "Enter") {
       // :userId로 이동
@@ -92,6 +86,8 @@ export default function SearchBar() {
       !historyArr.includes(inputValue) &&
         inputValue.length > 0 &&
         setHistoryArr((prev) => [...prev, inputValue]);
+
+      setInputValue("");
     }
   };
 
@@ -104,18 +100,23 @@ export default function SearchBar() {
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleOnKeyPress}
           onFocus={() => setHistoryOpen(true)}
-          // onBlur={() => setHistoryOpen(false)}
+          onBlur={(e) => e.relatedTarget === null && setHistoryOpen(false)}
           type="text"
           placeholder="Github Username..."
         />
         {historyArr.length > 0 && historyOpen && (
-          <HistoryUl>
+          <HistoryUl tabIndex={0}>
             {historyArr.map((history, index) => (
               <HistoryLi
                 key={index}
                 onClickCapture={(e) => console.log(e.currentTarget)}
               >
-                <p onClick={(e) => navigate(`${e.currentTarget.innerHTML}`)}>
+                <p
+                  onClick={(e) => {
+                    navigate(`${e.currentTarget.innerHTML}`);
+                    setHistoryOpen(false);
+                  }}
+                >
                   {history}
                 </p>
                 <button
