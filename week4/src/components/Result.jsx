@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { API_URL } from "../api/config";
 
@@ -80,9 +80,20 @@ const Circle = styled.div`
   }
 `;
 
+const CloseBtn = styled.button`
+  align-self: flex-end;
+  transform: translateY(-10px);
+  margin-right: 20px;
+  border: 0;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+`;
+
 export default function Result() {
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState();
+  const navigate = useNavigate();
 
   const getResultById = async () => {
     try {
@@ -121,6 +132,7 @@ export default function Result() {
   if (!userInfo) return <Box>Loading...</Box>;
   return (
     <Box>
+      <CloseBtn onClick={() => navigate("/search")}>X</CloseBtn>
       <Image src={userInfo.imageUrl} alt="프로필 이미지" />
       <Names>
         <h1>{userInfo.userName}</h1>
