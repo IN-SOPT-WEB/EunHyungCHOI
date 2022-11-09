@@ -11,8 +11,8 @@ const Box = styled.div`
   flex-direction: column;
 
   width: 80%;
-  height: 60%;
   margin: 20px 0px;
+  padding: 30px 0px;
   background-color: #6c00b9a3;
   border-radius: 25px;
 `;

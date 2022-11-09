@@ -19,7 +19,7 @@ const Title = styled.h1`
   font-size: 35px;
 `;
 
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -80,29 +80,41 @@ export default function SearchBar() {
 
   const handleSubmitUserId = (e) => {
     e.preventDefault();
-    navigate(`${inputValue}`);
-    !historyArr.includes(inputValue) &&
-      setHistoryArr((prev) => [...prev, inputValue]);
+
+    setInputValue(e.currentTarget.value);
+  };
+
+  const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+      // :userId로 이동
+      navigate(`${inputValue}`);
+      // history 배열에 추가
+      !historyArr.includes(inputValue) &&
+        inputValue.length > 0 &&
+        setHistoryArr((prev) => [...prev, inputValue]);
+    }
   };
 
   return (
     <Box>
       <Title>🐈‍ Github Profile Cat</Title>
-      <Form
-        onSubmit={handleSubmitUserId}
-        onFocus={() => setHistoryOpen(true)}
-        // onBlur={() => setHistoryOpen(false)}
-      >
+      <Form>
         <TextInput
-          onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleOnKeyPress}
+          onFocus={() => setHistoryOpen(true)}
+          // onBlur={() => setHistoryOpen(false)}
           type="text"
           placeholder="Github Username..."
         />
         {historyArr.length > 0 && historyOpen && (
           <HistoryUl>
             {historyArr.map((history, index) => (
-              <HistoryLi key={index}>
+              <HistoryLi
+                key={index}
+                onClickCapture={(e) => console.log(e.currentTarget)}
+              >
                 <p onClick={(e) => navigate(`${e.currentTarget.innerHTML}`)}>
                   {history}
                 </p>
