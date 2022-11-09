@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Result from "../components/Result";
 import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
+import { API_URL } from "../api/config";
+import axios from "axios";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 export default function SearchPage() {
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState("ilmerry");
   const [userInfo, setUserInfo] = useState({
     image: "이미지",
     userName: "USERNAME",
@@ -25,6 +27,12 @@ export default function SearchPage() {
       repos: 0,
     },
   });
+
+  useEffect(() => {
+    axios.get(`${API_URL}/${userId}`).then((res) => {
+      console.log(res);
+    });
+  }, [userId]);
 
   return (
     <Wrapper>
