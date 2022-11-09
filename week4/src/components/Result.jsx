@@ -87,8 +87,8 @@ export default function Result({ userInfo }) {
       </Names>
       <Button>Visit {userInfo.userName}</Button>
       <Circles>
-        {["Followers", "Followings", "Repos"].map((category) => (
-          <Circle>
+        {["Followers", "Followings", "Repos"].map((category, index) => (
+          <Circle key={index}>
             <h3>{category}</h3>
             <p>{userInfo.details[category.toLowerCase()]}</p>
           </Circle>
