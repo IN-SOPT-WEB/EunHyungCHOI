@@ -15,18 +15,8 @@ const Wrapper = styled.div`
 `;
 
 export default function SearchPage() {
-  const [userId, setUserId] = useState("ilmerry");
-  const [userInfo, setUserInfo] = useState({
-    imageUrl: "이미지",
-    userName: "USERNAME",
-    userId: "userid",
-    githubUrl: "github 주소",
-    details: {
-      followers: 0,
-      followings: 0,
-      repos: 0,
-    },
-  });
+  const [userId, setUserId] = useState();
+  const [userInfo, setUserInfo] = useState();
 
   useEffect(() => {
     axios
@@ -62,8 +52,8 @@ export default function SearchPage() {
 
   return (
     <Wrapper>
-      <SearchBar />
-      <Result userInfo={userInfo} />
+      <SearchBar setUserId={setUserId} />
+      {userInfo && <Result userInfo={userInfo} />}
     </Wrapper>
   );
 }

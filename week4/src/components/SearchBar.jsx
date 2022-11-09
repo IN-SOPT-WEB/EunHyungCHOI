@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Box = styled.div`
@@ -39,12 +39,23 @@ const TextInput = styled.input`
   }
 `;
 
-export default function SearchBar() {
+export default function SearchBar({ setUserId }) {
+  const [inputValue, setInputValue] = useState("");
+  const handleSubmitUserId = (e) => {
+    e.preventDefault();
+    setUserId(inputValue);
+  };
+
   return (
     <Box>
       <Title>🐈‍ Github Profile Cat</Title>
-      <Form>
-        <TextInput type="text" placeholder="Github Username..." />
+      <Form onSubmit={handleSubmitUserId}>
+        <TextInput
+          onChange={(e) => setInputValue(e.target.value)}
+          value={inputValue}
+          type="text"
+          placeholder="Github Username..."
+        />
       </Form>
     </Box>
   );
