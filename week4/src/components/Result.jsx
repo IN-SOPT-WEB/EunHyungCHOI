@@ -86,7 +86,7 @@ export default function Result({ userInfo }) {
         <h2>{userInfo.userId}</h2>
       </Names>
       <Button onClick={() => (window.location.href = userInfo.githubUrl)}>
-        Visit {userInfo.userName}
+        Visit {userInfo.userId}
       </Button>
       <Circles>
         {["Followers", "Followings", "Repos"].map((category, index) => (

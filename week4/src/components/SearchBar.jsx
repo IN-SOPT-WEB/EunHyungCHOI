@@ -39,23 +39,74 @@ const TextInput = styled.input`
   }
 `;
 
+const HistoryUl = styled.ul`
+  position: absolute;
+  transform: translateY(52px);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px 0px;
+  background-color: rgba(255, 255, 255, 0.386);
+`;
+
+const HistoryLi = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  line-height: 30px;
+  color: gray;
+  & > p {
+    width: 100%;
+    cursor: pointer;
+  }
+  & > button {
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    color: gray;
+    cursor: pointer;
+  }
+`;
+
 export default function SearchBar({ setUserId }) {
   const [inputValue, setInputValue] = useState("");
+  const [historyArr, setHistoryArr] = useState([]);
+  const [historyOpen, setHistoryOpen] = useState(false);
+
   const handleSubmitUserId = (e) => {
     e.preventDefault();
     setUserId(inputValue);
+    !historyArr.includes(inputValue) &&
+      setHistoryArr((prev) => [...prev, inputValue]);
   };
 
   return (
     <Box>
       <Title>🐈‍ Github Profile Cat</Title>
-      <Form onSubmit={handleSubmitUserId}>
+      <Form
+        onSubmit={handleSubmitUserId}
+        onFocus={() => setHistoryOpen(true)}
+        onBlur={() => setHistoryOpen(false)}
+      >
         <TextInput
           onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
           type="text"
           placeholder="Github Username..."
         />
+        {historyArr.length > 0 && historyOpen && (
+          <HistoryUl>
+            {historyArr.map((history) => (
+              <HistoryLi>
+                <p>{history}</p>
+                <button>x</button>
+              </HistoryLi>
+            ))}
+          </HistoryUl>
+        )}
       </Form>
     </Box>
   );
