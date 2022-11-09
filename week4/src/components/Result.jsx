@@ -1,5 +1,8 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { API_URL } from "../api/config";
 
 const Box = styled.div`
   display: flex;
@@ -77,7 +80,45 @@ const Circle = styled.div`
   }
 `;
 
-export default function Result({ userInfo }) {
+export default function Result() {
+  const { userId } = useParams();
+  const [userInfo, setUserInfo] = useState();
+
+  const getResultById = async () => {
+    try {
+      const {
+        avatar_url,
+        name,
+        login,
+        html_url,
+        followers,
+        following,
+        public_repos,
+      } = await (
+        await axios.get(`${API_URL}/${userId}`)
+      ).data;
+
+      setUserInfo({
+        imageUrl: avatar_url,
+        userName: name,
+        userId: login,
+        githubUrl: html_url,
+        details: {
+          followers: followers,
+          followings: following,
+          repos: public_repos,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getResultById();
+  }, [userId]);
+
+  if (!userInfo) return <Box>Loading...</Box>;
   return (
     <Box>
       <Image src={userInfo.imageUrl} alt="프로필 이미지" />

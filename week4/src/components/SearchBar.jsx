@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Box = styled.div`
@@ -71,14 +72,15 @@ const HistoryLi = styled.li`
   }
 `;
 
-export default function SearchBar({ setUserId }) {
+export default function SearchBar() {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
   const [historyArr, setHistoryArr] = useState([]);
   const [historyOpen, setHistoryOpen] = useState(false);
 
   const handleSubmitUserId = (e) => {
     e.preventDefault();
-    setUserId(inputValue);
+    navigate(`${inputValue}`);
     !historyArr.includes(inputValue) &&
       setHistoryArr((prev) => [...prev, inputValue]);
   };
