@@ -91,7 +91,7 @@ export default function SearchBar() {
       <Form
         onSubmit={handleSubmitUserId}
         onFocus={() => setHistoryOpen(true)}
-        onBlur={() => setHistoryOpen(false)}
+        // onBlur={() => setHistoryOpen(false)}
       >
         <TextInput
           onChange={(e) => setInputValue(e.target.value)}
@@ -101,10 +101,24 @@ export default function SearchBar() {
         />
         {historyArr.length > 0 && historyOpen && (
           <HistoryUl>
-            {historyArr.map((history) => (
-              <HistoryLi>
-                <p>{history}</p>
-                <button>x</button>
+            {historyArr.map((history, index) => (
+              <HistoryLi key={index}>
+                <p onClick={(e) => navigate(`${e.currentTarget.innerHTML}`)}>
+                  {history}
+                </p>
+                <button
+                  onClick={(e) =>
+                    setHistoryArr((prev) =>
+                      prev.filter(
+                        (history) =>
+                          history !==
+                          e.currentTarget.parentNode.firstChild.innerHTML
+                      )
+                    )
+                  }
+                >
+                  x
+                </button>
               </HistoryLi>
             ))}
           </HistoryUl>
