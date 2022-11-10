@@ -8,7 +8,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/search" element={<SearchPage />}>
           <Route path=":userId" element={<Result />} />
         </Route>
