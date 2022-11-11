@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginAPI } from "../api/api";
+import { loginAPI, userAPI } from "../api/api";
 
 export default function LoginPage() {
   const [id, setId] = useState("");
@@ -8,7 +8,9 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const handleClickLogin = async () => {
-    const data = await loginAPI(id, pwd);
+    const post = await loginAPI(id, pwd);
+    const get = await userAPI();
+
     navigate("/search");
   };
 
